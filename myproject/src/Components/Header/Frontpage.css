@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border:none;
+  
+  }
+  body{
+    width: 100vw;
+    height:100vh;
+   
+    text-align: center;
+  }
+  .registration__outer__div{
+    height:600px;
+    border:1px solid black;
+    margin: 50px;
+    background-color: #F4FCD9;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+  .registration__inner__div{
+    width: 30%;
+    height: 80%;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    transition: all 1s ease-out;
+    transform: rotateY(360deg);
+  }
+  .inner__div_buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     gap:5px;
+    
+  }
+  .clicked__button{
+    padding: .4rem 1.5rem;
+    border:none;
+    border-radius: 20px;
+    background-color: #B4CFB0;
+    color:white;
+    font-weight: bold;
+  }
+  .unclicked__button{
+    padding: .4rem 1.5rem;
+    border:none;
+    border-radius: 20px;
+    background-color: #EFEFEF;
+    font-weight: bold;
+  }
+  .unclicked__button:hover{
+    background-color: #B4CFB0;
+    color:#fff;
+  }
+  .pages{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    margin-top: 50px;
+  }
+  .clicked__page{
+    width:100%;
+    min-width:370px;
+    margin-top: 10px;
+    height:80%;
+    z-index: 4;
+    border:1px solid black;
+  }
+  .unclicked__page{
+    display: none;
+    width:100%;
+    margin-top: 10px;
+    min-width:300px;
+    height:80%;
+    border:1px solid black;
+  }
+  .hidden{
+    display: none;
+  }
+  .registration__inner__div1{
+    width: 30%;
+    height: 80%;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 20px;
+    transition: all 1s ease-out;;
+    transform: rotateY(360deg);
+  }
+  .forms{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    max-height: 200px;
+  }
+  .forms input{
+    border:none;
+    color:#000;
+    outline: none;
+    border-radius: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    padding:7px 10px;
+    border:2px solid aliceblue;
+  }
+  .forms input:hover{
+    border:2px solid #B4CFB0;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #D8D8D8;
+    opacity: 1; /* Firefox */
+  }
+  .submit__button{
+    border:none;
+    padding:8px 15px;
+    background-color: aliceblue;
+    border-radius: 20px;
+  } 
+  .submit__button:hover{
+    background-color: #B4CFB0;
+    color:#fff;
+  
+  }
+  
