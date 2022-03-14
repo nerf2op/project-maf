@@ -1,7 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './Body.css';
+
+
 const obj = {}
 function Body() {
+
+  const product= useSelector((state)=> state.getProductData);
+  
   const obj = [{src:"https://cdn.anscommerce.com/image/tr:h-416,w-314,cm-pad_resize/data/celio-india/18-Jan-2022/8055458_2.jpg",
 Type:"t-Shirts"},{
 src:"https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/11780968/2020/4/3/11591b03-97f1-4907-b735-906984c4bcd61585905051096HIGHLANDERMenGreenWhiteSlimFitPrintedCasualShirt1.jpg"

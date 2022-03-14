@@ -1,35 +1,36 @@
 import React from "react";
-import Header from "./Components/Header/Header";
-import CheckHeader from './Components/Header/CheckHeader'
 // import './App.css'
-import Card from "./Card";
-import Body from "./Components/Body/Body";
-import Body2 from "./Components/Body/Body2";
-import './App.css'
-import Frontpage from "./Components/Header/Frontpage";
-import ShowData from "./Components/ShowData/ShowData";
+import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
+import AllProduct from "./Components/AllProduct/AllProduct";
+import Account from "./Components/Account/Account";
+import Home from "./Home/Home";
+import Navbar from "./Components/Nav/Navbar";
+import Banner from "./Components/Header/Banner";
+import AddToCart from "./Components/AddToCart/AddToCart";
+
 function App() {
   return (
     <>
-    {/* <CheckHeader/> */}
-    {/* <Header></Header> */}
-    {/* <div>wef</div>
-   <Header2/> */}
-    {/* <Header2/><Header2/> */}
-    {/* </div>
-    <div className="d-flex justify-content-evenly align-items-center">
-    <Header3/></div> */}
-    {/* <CheckHeader login={true}/> */}
-    {/* <Body/>
-    <Card/>
     
-    <Body2/> */}
-    {/* <CheckHeader/> */}
-    {/* <Frontpage/> */}
-    <ShowData></ShowData>
-    <Body/>
-    <Card/>
-    <Body2/>
+  <Router>
+  <Navbar/>
+    <Routes>
+      <Route path="/" element = {<Banner/>} />
+    </Routes>
+    <Routes>
+      <Route path="/account" element = {<Account/>} />
+    </Routes>
+    <Routes>
+      <Route path="/allproducts" element = {<AllProduct/>} />
+    </Routes>
+    <Routes>
+      <Route path="/addtocart" element = {<AddToCart/>} />
+    </Routes>
+    <Routes>
+      <Route path="/home" element = {<Home/>} />
+    </Routes>
+  </Router>
+ 
     
     </>
   );
