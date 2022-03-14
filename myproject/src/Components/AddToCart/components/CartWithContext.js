@@ -1,31 +1,31 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import Items from "./Items";
-import arrow from "./images/arrow.png";
-import cartImage from "./images/cartImage.png";
-import { CartContext } from "./Cart.js";
+
 import { Button } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { CLEAR_ALL } from "../../../constants";
 
 const CartWithContext = () => {
-  const id = useSelector((state)=> state.getProductId);
-  
-  const product= useSelector((state)=> state.getProductData);
-  console.log("pro",id);
-  const { items, clearAll, totalItems, totalAmount } = useContext(CartContext);
+  const id = useSelector((state) => state.getProductId);
+  const dispatch = useDispatch();
+  const cartData = useSelector((state) => state.getProductId);
+  const q = useSelector((state) => state.getQuantity);
+
+  const amount = useSelector((state) => state.getAmount);
+
   return (
     <>
-      <section className="main-cart-section">{
-        console.log("id==>"+id)
-      }
+      <section className="main-cart-section">
+        {console.log("id==>" + id)}
         <h1>Shopping Cart</h1>
         <p className="total-items">
-          Total items: <span className="total-items-count">{totalItems}</span>
+          Total items: <span className="total-items-count">{q}</span>
         </p>
         <div className="cart-items">
           <div className="cart-items-container">
             <Scrollbars className="scroll">
-              {product.map((val, idx) => {
+              {cartData.map((val, idx) => {
                 return <Items key={idx} {...val} />;
               })}
             </Scrollbars>
@@ -33,16 +33,20 @@ const CartWithContext = () => {
         </div>
         <div className="card-total">
           <h3>
-            Cart Total : <span>{totalAmount}</span>
+            Cart Total : <span>{amount}</span>
           </h3>
           <Button size="large" type="primary">
             Checkout
           </Button>
           <Button
+            onClick={() => {
+              dispatch({
+                type: CLEAR_ALL,
+              });
+            }}
             size="large"
             type="danger"
             className="clear-cart"
-            onClick={() => clearAll()}
           >
             Clear All
           </Button>

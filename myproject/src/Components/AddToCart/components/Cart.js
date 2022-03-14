@@ -1,53 +1,28 @@
-import React, { createContext,useEffect,useReducer} from 'react'
-import './cart.css'
-import CartWithContext from './CartWithContext';
-import Products from './Products';
-import {reducer} from './reducer'
-const initialState={
-  items: Products,
-  totalAmount : 0,
-  totalItems: 0
-};
-export const CartContext = createContext();
-const Cart = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
-	const removeItem = (id)=>{
-        return dispatch({
-			type: "REMOVE_ITEM",
-			payload :id,
-		})
-    };
+import React, { createContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAmount, setQuantity } from "../../../actions/getGlobalData";
 
-	const clearAll = ()=>{
-		return dispatch({
-			type : "CLEAR_ALL"
-		})
-	};
-	const increment = (id)=>{
-		return dispatch({
-			type : "INCREMENT_ITEM",
-			payload : id,
-		})
-	}
-	const decrement = (id)=>{
-		return dispatch({
-			type :  "DECREMENT_ITEM",
-			payload: id,
-		})
-	}
-	useEffect(() => {
-		 dispatch({
-			type : "TOTAL_QUANTITY"
-		})
-	}, [state.items])
-	
+import "./cart.css";
+import CartWithContext from "./CartWithContext";
+// import Products from './Products';
+
+export const CartContext = createContext();
+
+const Cart = () => {
+  const Products = useSelector((state) => state.getProductId);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log("dispached", Products);
+    dispatch(setQuantity(Products));
+    dispatch(setAmount(Products));
+  }, [Products]);
+
   return (
     <>
-	<CartContext.Provider value={{...state, removeItem,clearAll,increment,decrement}}>
-    	<CartWithContext/>
-	</CartContext.Provider>
+      <CartWithContext />
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

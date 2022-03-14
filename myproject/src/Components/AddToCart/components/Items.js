@@ -1,14 +1,20 @@
-
-import { useContext } from "react";
-import { CartContext } from "./Cart.js";
 import { Card } from "antd";
 import "antd/dist/antd.css";
 import { PlusOutlined, DeleteOutlined, MinusOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+
+import {
+  deccrementQuantity,
+  incrementQuantity,
+  removeItem,
+} from "../../../actions/getGlobalData.js";
 
 const { Meta } = Card;
 
-const Items = ({ id, title, description, price, img, quantity }) => {
-  const { removeItem, increment, decrement } = useContext(CartContext);
+const Items = ({ _id, brand, type, price, img, quantity }) => {
+  const dispatch = useDispatch();
+
+  console.log("proDucr Id", _id);
   return (
     <>
       <Card
@@ -20,25 +26,26 @@ const Items = ({ id, title, description, price, img, quantity }) => {
         actions={[
           <PlusOutlined
             onClick={() => {
-              increment(id);
+              dispatch(incrementQuantity(_id));
+              // increment(_id);
             }}
             key="setting"
           />,
           <p>{quantity}</p>,
           <MinusOutlined
             onClick={() => {
-              decrement(id);
+              dispatch(deccrementQuantity(_id));
             }}
             key="ellipsis"
           />,
           <DeleteOutlined
             onClick={() => {
-              removeItem(id);
+              dispatch(removeItem(_id));
             }}
           />,
         ]}
       >
-        <Meta title={title} description={description} />
+        <Meta title={brand} description={type} />
         <Meta description={`Price: ${price} Rs `} />
       </Card>
     </>
